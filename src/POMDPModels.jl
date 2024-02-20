@@ -14,6 +14,7 @@ using StaticArrays
 using StatsBase
 using Random
 using Printf
+using OrderedCollections
 
 # for visualization
 using Compose
@@ -35,7 +36,6 @@ import POMDPs: initialstate, initialobs
 import POMDPs: updater, update
 import POMDPs: reward
 import POMDPs: convert_s, convert_a, convert_o
-
 
 
 include("TigerPOMDPs.jl")
@@ -116,5 +116,30 @@ export
 include("MiniHallway.jl")
 export
     MiniHallway
+
+include("NumericPOMDP.jl")
+export 
+    StateParam,
+    ActionsParam,
+    InitialStateParam,
+    ObservationParam,
+
+    number,
+    prob,
+    support,
+
+    TransitionProb,
+    ObservationProb,
+    RewardValue,
+
+    max_num_states,
+    dict,
+
+    FilePOMDP,
+    SFilePOMDP,
+
+    statenames,
+    actionnames,
+    obsnames
 
 end # module
