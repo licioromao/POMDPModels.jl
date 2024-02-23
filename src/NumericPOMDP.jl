@@ -171,6 +171,7 @@ function Base.getindex(reward::RewardLookUp, key::NTuple{4, Int})
     index = 1
     status = false
 
+    # TODO: Have Robert look at this
     possible_keys = [collect(key), [key[1], 0, 0, 0],  [0, key[2], 0, 0], [0, 0, key[3], 0], [0, 0, 0, key[4]],[key[1], key[2], 0, 0], [key[1], 0, key[3], 0], [key[1], 0, 0, key[4]], [0, key[2], key[3], 0], [0, key[2], 0, key[4]], [0, 0, key[3], key[4]], [key[1], key[2], key[3], 0], [key[1], key[2], 0, key[4]], [key[1], 0, key[3], key[4]], [0, key[2], key[3], key[4]], [0, 0, 0, 0]] # all possible keys
 
     for kk in possible_keys
