@@ -248,12 +248,12 @@ function observation(m::FilePOMDP{Int64}, a::Int64, sp::Int64)
 end
 
 reward(m::FilePOMDP{Int64}, s::Int64, a::Int64, sp::Int64, obs::Int64) = m.R[(s,a,sp,obs)]
-
 reward(m::FilePOMDP{Int64}, s::Int64, a::Int64, sp::Int64) = m.R[(s,a,sp,1)]
-
 reward(m::FilePOMDP{Int64}, s::Int64, a::Int64) = m.R[(s,a,1,1)]
 
 discount(m::FilePOMDP{Int64}) = m.discount
+
+initialstate_distribution(m::FilePOMDP{Int64}) = initialstate(m)
 
 # Data structure with names
 
@@ -303,6 +303,7 @@ function obsindex(m::SFilePOMDP{String}, key::String)
 end
 
 initialstate(m::SFilePOMDP{String}) = initialstate(m.pomdp)
+initialstate_distribution(m::SFilePOMDP{Int64}) = initialstate(m.pomdp)
 
 transition(m::SFilePOMDP{String}, s::Int64, a::Int64, sp::Int64) = transition(m.pomdp, s, a, sp)
 transition(m::SFilePOMDP{String}, s::Int64, a::Int64) = transition(m.pomdp, s, a)
