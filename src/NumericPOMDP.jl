@@ -227,7 +227,8 @@ function initialstate(m::FilePOMDP{Int64})
         return SparseCat(states(m), m.value_of_distribution)
     else
         @warn "Initial distribution is uniform"
-        return SparseCat(states(m), 1/states(m)*ones(states(m)))
+        _number = m.number_of_states
+        return SparseCat(states(m), 1/_number*ones(_number))
     end
 end
 
