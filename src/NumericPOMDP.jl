@@ -226,8 +226,8 @@ function initialstate(m::FilePOMDP{Int64})
     if !isempty(m.value_of_distribution)
         return SparseCat(states(m), m.value_of_distribution)
     else
-        @warn "No available initial condition."
-        return false
+        @warn "Initial distribution is uniform"
+        return SparseCat(states(m), 1/states(m)*ones(states(m)))
     end
 end
 
