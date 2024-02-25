@@ -140,6 +140,7 @@ export
 
     statenames,
     actionnames,
-    obsnames
+    obsnames,
+    initialstate_distribution
 
 end # module
