@@ -303,7 +303,7 @@ function obsindex(m::SFilePOMDP{String}, key::String)
 end
 
 initialstate(m::SFilePOMDP{String}) = initialstate(m.pomdp)
-initialstate_distribution(m::SFilePOMDP{Int64}) = initialstate(m.pomdp)
+initialstate_distribution(m::SFilePOMDP{String}) = initialstate(m.pomdp)
 
 transition(m::SFilePOMDP{String}, s::Int64, a::Int64, sp::Int64) = transition(m.pomdp, s, a, sp)
 transition(m::SFilePOMDP{String}, s::Int64, a::Int64) = transition(m.pomdp, s, a)
