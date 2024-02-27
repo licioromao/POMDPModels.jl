@@ -1,3 +1,5 @@
+# General comments: do not add line after function
+
 
 ## Types to deal with the memory saving feature
 struct ActionsParam 
@@ -52,7 +54,6 @@ Base.names(o::ObservationParam) = o.names_of_observations
 number(o::ObservationParam) = o.number_of_observations
 
 struct InitialStateParam{T}
-
     size_of_states::T
     type_of_distribution::String
     support_of_distribution::Set{T}
@@ -147,6 +148,7 @@ function Base.getindex(obj::TransitionsLookUp, key::NTuple{3, Int})
         end
     end
 
+    # TODO: possible error
     if !status
        return 0 
     end
@@ -200,6 +202,7 @@ struct FilePOMDP{Int64} <: POMDP{Int64, Int64, Int64}
     number_of_actions::Int64
     number_of_observations::Int64
 
+    # TODO: support_of_initialstate, value_of_initialstate
     support_of_distribution::Set{Int64}
     value_of_distribution::Vector{Float64}
 
@@ -226,7 +229,7 @@ function initialstate(m::FilePOMDP{Int64})
     if !isempty(m.value_of_distribution)
         return SparseCat(states(m), m.value_of_distribution)
     else
-        @warn "Initial distribution is uniform"
+        # @warn "Initial distribution is uniform"
         _number = m.number_of_states
         return SparseCat(states(m), 1/_number*ones(_number))
     end
